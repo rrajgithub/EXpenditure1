@@ -60,19 +60,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="ENTER WASTED OR DONATED MONEY" />
-
-    <Button
-        android:id="@+id/GivenMoney"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DONATED MONEY" />
-
-    <Button
-        android:id="@+id/erasedata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ERASE DATA" />
+        android:hint="ENTER THE WASTED AMOUNT" />
 
 
 </LinearLayout>
