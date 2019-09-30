@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class home extends AppCompatActivity {
 
-    Button bt, dt, cp, adta,gimo;
+    Button bt, dt, cp, adta,gimo,erda;
     SharedPreferences sharedPreferences;
     Set<String> hash_Set;
     String name;
@@ -36,6 +36,8 @@ public class home extends AppCompatActivity {
         cp = (Button)findViewById(R.id.changepassword);
         adta = (Button)findViewById(R.id.addmoney);
         gimo = (Button)findViewById(R.id.GivenMoney);
+        erda = (Button)findViewById(R.id.erasedata);
+
         TextView d=(TextView)findViewById(R.id.Wastedmoney);
         final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
         final String email1 = user1.getDisplayName();
@@ -98,11 +100,20 @@ public class home extends AppCompatActivity {
                 }
                 else {
                     d.setText("WASTED MONEY : Rs " + fetch);
-
                 }
                 editor.putLong(email1,fetch).apply();
                 editor.commit();
 
+            }
+        });
+        erda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor =sharedPreferences.edit();
+                editor.putLong(email1,0).apply();
+                editor.commit();
+                TextView text= (TextView)findViewById(R.id.Wastedmoney);
+                text.setText("WASTED MONEY : Rs 0");
             }
         });
         //RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler);

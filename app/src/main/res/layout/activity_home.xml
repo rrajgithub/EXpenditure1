@@ -68,6 +68,12 @@
         android:layout_height="wrap_content"
         android:text="DONATED MONEY" />
 
+    <Button
+        android:id="@+id/erasedata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ERASE DATA" />
+
 
 </LinearLayout>
  <!--   <androidx.recyclerview.widget.RecyclerView
