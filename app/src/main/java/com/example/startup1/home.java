@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class home extends AppCompatActivity {
 
-    Button bt, dt, cp, adta;
+    Button bt, dt, cp, adta,gimo;
     SharedPreferences sharedPreferences;
     Set<String> hash_Set;
     String name;
@@ -35,6 +35,7 @@ public class home extends AppCompatActivity {
         dt = (Button)findViewById(R.id.delete);
         cp = (Button)findViewById(R.id.changepassword);
         adta = (Button)findViewById(R.id.addmoney);
+        gimo = (Button)findViewById(R.id.GivenMoney);
         TextView d=(TextView)findViewById(R.id.Wastedmoney);
         final FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
         final String email1 = user1.getDisplayName();
@@ -42,12 +43,42 @@ public class home extends AppCompatActivity {
 
             sharedPreferences = getSharedPreferences(email1, Context.MODE_PRIVATE);
             long fetch = sharedPreferences.getLong(email1, 0);
-            d.setText("WASTED MONEY : Rs " + fetch );
+            if(fetch < 0 )
+            {
+                d.setText("DONATED MONEY : Rs " + (-1 * fetch));
+            }
+            else {
+                d.setText("WASTED MONEY : Rs " + fetch);
+            }
         }
         catch(Exception e)
         {
             Log.i("Wastage","0");
         }
+        gimo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                TextView text= (TextView)findViewById(R.id.add);
+                long total = Long.parseLong(text.getText().toString());
+                text.setText("");
+                text.setHint("ENTER WASTED OR DONATED MONEY");
+                sharedPreferences = getSharedPreferences(email1, Context.MODE_PRIVATE);
+                long fetch = sharedPreferences.getLong(email1, 0);
+                fetch = fetch - total;
+                TextView d=(TextView)findViewById(R.id.Wastedmoney);
+                if(fetch < 0 )
+                {
+                    d.setText("DONATED MONEY : Rs " + (-1 * fetch));
+                }
+                else {
+                    d.setText("WASTED MONEY : Rs " + fetch);
+
+                }
+                editor.putLong(email1,fetch).apply();
+                editor.commit();
+            }
+        });
                 adta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +87,19 @@ public class home extends AppCompatActivity {
                 TextView text= (TextView)findViewById(R.id.add);
                 long total = Long.parseLong(text.getText().toString());
                 text.setText("");
-                text.setHint("ENTER THE WASTED AMOUNT");
+                text.setHint("ENTER THE WASTED OR DONATED AMOUNT");
                 sharedPreferences = getSharedPreferences(email1, Context.MODE_PRIVATE);
                 long fetch = sharedPreferences.getLong(email1, 0);
                 fetch = fetch + total;
                 TextView d=(TextView)findViewById(R.id.Wastedmoney);
-                d.setText("WASTED MONEY : Rs " + fetch);
+                if(fetch < 0 )
+                {
+                    d.setText("DONATED MONEY : Rs " + (-1 * fetch));
+                }
+                else {
+                    d.setText("WASTED MONEY : Rs " + fetch);
+
+                }
                 editor.putLong(email1,fetch).apply();
                 editor.commit();
 
