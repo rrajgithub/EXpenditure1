@@ -79,7 +79,7 @@ public class home extends AppCompatActivity {
         }
         catch(Exception e)
         {
-            Log.e("puneet","puneet");
+            
         }*/
 
         Log.e("value","my");
