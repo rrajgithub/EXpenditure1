@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#8BC34A"
+    android:layout_weight="3"
+    tools:context=".details">
+
+    <Button
+        android:id="@+id/Today"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DAILY"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="21dp" />
+    <Button
+        android:id="@+id/Weak"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WEAKLY"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="21dp" />
+    <Button
+        android:id="@+id/Monthly"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MONTHLY"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="21dp" />
+</LinearLayout>
